@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col gap-5 justify-center">
+    <div class="container">
         <RegisterForm v-if="form == 'Register'" />
         <LoginForm v-else/>
         <div class="text-center">
@@ -9,7 +9,6 @@
 </template>
 
 <script setup lang="ts">
-
 definePageMeta({
   layout: "auth",
 });
@@ -19,3 +18,5 @@ const changeRegisterForm = () => {
   form.value = 'Register';
 }
 </script>
+
+<style src="./style.scss" lang="scss" scoped></style>

@@ -1,8 +1,15 @@
 <template>
-    <div>
+    <div class="default-container">
         <slot v-if="checkUserState" />
     </div>
 </template>
+
+<style scoped>
+.default-container {
+  @apply h-screen;
+  touch-action: pan-y;
+}
+</style>
 
 <script setup lang="ts">
 import {Auth} from '~/services/FirebaseAuth/authentication';

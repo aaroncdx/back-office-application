@@ -1,38 +1,46 @@
 <template>
-    <div class="p-5">
-        <a-form
-        :model="formState"
-        name="basic"
-        autocomplete="off"
-        @finish="onFinish"
-        @finishFailed="onFinishFailed"
-        >
-        <a-form-item
-            label="Username"
-            name="username"
-            :rules="[{ required: true, message: 'Please input your username!' }]"
-        >
-            <a-input v-model:value="formState.username" />
-        </a-form-item>
-    
-        <a-form-item
-            label="Password"
-            name="password"
-            :rules="[{ required: true, message: 'Please input your password!' }]"
-        >
-            <a-input-password v-model:value="formState.password" />
-        </a-form-item>
-    
-        <a-form-item name="remember" >
-            <a-checkbox v-model:checked="formState.remember">Remember me</a-checkbox>
-        </a-form-item>
-    
-        <a-form-item >
-            <a-button type="primary" shape="round" html-type="submit">Submit</a-button>
-        </a-form-item>
-        </a-form>
+  <div class="form-container">
+    <div class="header-container">
+      <span class="header">Login</span>
+      <span class="caption">Login to continue using the app</span>
     </div>
+    <a-form
+    class="form"
+    :model="formState"
+    autocomplete="off"
+    @finish="onFinish"
+    @finishFailed="onFinishFailed"
+    >
+      <a-form-item
+      label="Username"
+      name="username"
+      :rules="[{ required: true, message: 'Please input your username!' }]"
+      >
+          <a-input v-model:value="formState.username" />
+      </a-form-item>
+  
+      <a-form-item
+      label="Password"
+      name="password"
+      :rules="[{ required: true, message: 'Please input your password!' }]"
+      >
+          <a-input-password v-model:value="formState.password" />
+      </a-form-item>
+  
+      <a-form-item class="mt-10">
+          <a-button
+          class="w-full"  
+          type="primary"  
+          shape="round" 
+          size="large" 
+          html-type="submit">
+            Log in
+          </a-button>
+      </a-form-item>
+    </a-form>
+  </div>
   </template>
+
   <script lang="ts" setup>
   import { reactive } from 'vue';
   import {Auth} from '~/services/FirebaseAuth/authentication';
@@ -67,5 +75,5 @@
     console.log('Failed:', errorInfo);
   };
   </script>
-  
+  <style src="./LoginForm.scss" lang="scss" scoped></style>
   
