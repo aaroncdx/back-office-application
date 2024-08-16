@@ -9,6 +9,10 @@ import {onMounted, computed, reactive } from "vue";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 
+definePageMeta({
+  layout: "auth",
+});
+
 const config = useRuntimeConfig();
 
    
@@ -24,8 +28,10 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 
+const auth = firebase.auth();
+
 const register = async () => {
-    const auth = firebase.auth();
+    
     firebase.auth().createUserWithEmailAndPassword('aaroncdx@gmail.com', "aaron123")
   .then((userCredential) => {
     // Signed in 
@@ -44,10 +50,29 @@ const register = async () => {
 
 }
 
+const signin = async () => {
+    firebase.auth().signInWithEmailAndPassword('aaroncdx@gmail.com', "aaron123")
+  .then((userCredential) => {
+    // Signed in
+    var user = userCredential.user;
+    console.log('userCredential',userCredential);
+    
+    // ...
+  })
+  .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    console.log('error', error);
+    
+  });
+}
+
+
 
 onMounted(async ()=>{
-console.log(useRuntimeConfig());
-await register();
+    console.log(' firebase.auth().currentUser', firebase.auth().currentUser);
+    
+// await updateUser();
 console.log('finish on mounted');
 
 })

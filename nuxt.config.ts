@@ -11,5 +11,9 @@ export default defineNuxtConfig({
 			firebaseAppId: process.env.FIREBASE_APP_ID, 
 		},
 	},
-  devtools: { enabled: true }
+  devtools: { enabled: true },
+  modules: [,
+	'@nuxtjs/tailwindcss',
+  ]
+	
 })
