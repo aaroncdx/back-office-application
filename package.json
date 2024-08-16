@@ -10,7 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "ant-design-vue": "^4.2.3",
+    "@ant-design-vue/nuxt": "^1.4.2",
     "firebase": "^10.13.0",
     "lodash": "^4.17.21",
     "nuxt": "^3.12.4",

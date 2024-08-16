@@ -14,6 +14,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [,
 	'@nuxtjs/tailwindcss',
+	'@ant-design-vue/nuxt',
   ],
   tailwindcss: {
 	cssPath: '~/assets/css/tailwind.css',

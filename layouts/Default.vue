@@ -1,6 +1,12 @@
 <template>
     <div>
-        Default
         <slot />
     </div>
 </template>
+
+<script setup lang="ts">
+onMounted(()=>{
+    console.log('Default layout');
+    
+})
+</script>

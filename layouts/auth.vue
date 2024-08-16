@@ -1,6 +1,12 @@
 <template>
     <div>
-        auth
         <slot />
     </div>
 </template>
+
+<script setup lang="ts">
+onMounted(()=>{
+    console.log('auth layout');
+    
+})
+</script>
