@@ -35,6 +35,10 @@
   </template>
   <script lang="ts" setup>
   import { reactive } from 'vue';
+  import {Auth} from '~/services/FirebaseAuth/authentication';
+
+  const FirebaseAuth = Auth();
+  const router = useRouter();
   
   interface FormState {
     username: string;
@@ -47,8 +51,16 @@
     password: '',
     remember: true,
   });
-  const onFinish = (values: any) => {
-    console.log('Success:', values);
+  
+  const onFinish = async (values: any) => {
+    FirebaseAuth.auth.signInWithEmailAndPassword(formState.username,formState.password)
+    .then((userCredential) => {
+    console.log('userCredential',userCredential);
+    router.push('/edit');
+    })
+    .catch((error) => {
+    console.log('error', error);
+    });
   };
   
   const onFinishFailed = (errorInfo: any) => {
