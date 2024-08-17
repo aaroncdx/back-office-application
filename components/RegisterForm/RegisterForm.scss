@@ -1,0 +1,15 @@
+.header-container{
+    @apply flex flex-col gap-2 
+}
+
+.header{
+    @apply text-sc-h3; 
+}
+
+.caption{
+    @apply text-sc-body1;
+}
+
+.register-form-container{
+    @apply flex flex-col gap-5 m-5 
+}

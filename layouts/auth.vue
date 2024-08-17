@@ -6,7 +6,7 @@
 
 <style scoped>
 .default-container {
-  @apply h-screen;
+  @apply h-screen m-5;
   touch-action: pan-y;
 }
 </style>
