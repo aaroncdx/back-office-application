@@ -43,8 +43,10 @@
 
   <script lang="ts" setup>
   import {Auth} from '~/services/FirebaseAuth/authentication';
+  import { useAuthStore } from "~/stores/authStore";
 
   const FirebaseAuth = Auth();
+  const authStore = useAuthStore();
   const router = useRouter();
   
   const formState = ref({
@@ -57,6 +59,7 @@
     FirebaseAuth.auth.signInWithEmailAndPassword(formState.value.username,formState.value.password)
     .then((userCredential) => {
     console.log('userCredential',userCredential);
+    authStore.setUser(userCredential);
     router.push('/edit');
     })
     .catch((error) => {
