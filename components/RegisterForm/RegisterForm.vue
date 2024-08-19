@@ -23,7 +23,7 @@
         name="username"
         :rules="[{ required: true, message: 'Please input your username!' }]"
         >
-            <a-input v-model="formState.username"/>
+            <a-input v-model:value="formState.username"/>
         </a-form-item>
 
         <a-form-item
@@ -31,7 +31,7 @@
         name="email"
         :rules="[{ required: true, message: 'Please input your email!' }]"
         >
-            <a-input v-model="formState.email"/>
+            <a-input v-model:value="formState.email"/>
         </a-form-item>
     
         <a-form-item
@@ -39,16 +39,16 @@
         name="password"
         :rules="[{ required: true, message: 'Please input your password!' }]"
         >
-            <a-input-password v-model="formState.password"/>
+            <a-input-password v-model:value="formState.password"/>
         </a-form-item>
 
-        <a-form-item
+        <!-- <a-form-item
         label="Confirm Password"
         name="confirmPassword"
         :rules="[{ required: true, message: 'Please input confirm password!' }]"
         >
-            <a-input-password v-model="formState.confirmPass"/>
-        </a-form-item>
+            <a-input-password v-model:value="formState.confirmPass"/>
+        </a-form-item> -->
     
         <a-form-item class="mt-10">
             <a-button

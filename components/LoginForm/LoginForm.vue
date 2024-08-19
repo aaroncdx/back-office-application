@@ -16,7 +16,7 @@
       name="username"
       :rules="[{ required: true, message: 'Please input your username!' }]"
       >
-          <a-input v-model="formState.username" />
+          <a-input v-model:value="formState.username" />
       </a-form-item>
   
       <a-form-item
@@ -24,7 +24,7 @@
       name="password"
       :rules="[{ required: true, message: 'Please input your password!' }]"
       >
-          <a-input-password v-model="formState.password" />
+          <a-input-password v-model:value="formState.password" />
       </a-form-item>
   
       <a-form-item class="mt-10">
@@ -42,26 +42,19 @@
   </template>
 
   <script lang="ts" setup>
-  import { reactive } from 'vue';
   import {Auth} from '~/services/FirebaseAuth/authentication';
 
   const FirebaseAuth = Auth();
   const router = useRouter();
   
-  interface FormState {
-    username: string;
-    password: string;
-    remember: boolean;
-  }
-  
-  const formState = reactive<FormState>({
+  const formState = ref({
     username: '',
     password: '',
     remember: true,
   });
   
   const onFinish = async (values: any) => {
-    FirebaseAuth.auth.signInWithEmailAndPassword(formState.username,formState.password)
+    FirebaseAuth.auth.signInWithEmailAndPassword(formState.value.username,formState.value.password)
     .then((userCredential) => {
     console.log('userCredential',userCredential);
     router.push('/edit');
