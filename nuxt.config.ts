@@ -15,10 +15,11 @@ export default defineNuxtConfig({
   modules: [,
 	'@nuxtjs/tailwindcss',
 	'@ant-design-vue/nuxt',
+	'@pinia/nuxt',
   ],
   tailwindcss: {
 	cssPath: '~/assets/css/tailwind.css',
 	configPath: 'tailwind.config',
-	},
+	}
 	
 })
