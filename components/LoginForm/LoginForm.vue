@@ -58,8 +58,14 @@
   const onFinish = async (values: any) => {
     FirebaseAuth.auth.signInWithEmailAndPassword(formState.value.username,formState.value.password)
     .then((userCredential) => {
-    console.log('userCredential',userCredential);
-    authStore.setUser(userCredential);
+      let setUser = {
+        displayName : userCredential.user?.displayName,
+        email : userCredential.user?.email,
+        phoneNumber : userCredential.user?.phoneNumber,
+        photoURL : userCredential.user?.photoURL,
+        uid : userCredential.user?.uid,
+      }
+    authStore.setUser(setUser);
     router.push('/edit');
     })
     .catch((error) => {

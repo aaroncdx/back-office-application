@@ -19,8 +19,8 @@ onMounted(()=>{
     
     FirebaseAuth.auth.onAuthStateChanged((user) => {
         if (user) {
-        checkUserState.value = true;  
-          console.log('user',user);
+        checkUserState.value = true;
+        
         } else {
             checkUserState.value = false;
             router.push('/');  

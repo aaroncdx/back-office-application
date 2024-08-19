@@ -18,9 +18,11 @@
 
 <script lang="ts" setup>
 import {Auth} from '~/services/FirebaseAuth/authentication';
+import {useAuthStore} from '~/stores/authStore';
 import {FireStore} from '~/services/fireStore';
 const FirebaseAuth = Auth();
 const api = FireStore();
+const authStore = useAuthStore();
 const router = useRouter();
 
 definePageMeta({
@@ -29,6 +31,7 @@ definePageMeta({
 
 const logoutOnClick = () => {
     FirebaseAuth.auth.signOut().then(() => {
+    authStore.logout();
     router.push('/');
     }).catch((error) => {
     // An error happened.

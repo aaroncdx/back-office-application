@@ -22,7 +22,6 @@ onMounted(()=>{
         if (user) {
           checkUserState.value = false;
           router.push('/edit');
-          console.log('user',user);
         } else {
         checkUserState.value = true;
           console.log('user', 'User is signed out');
