@@ -40,7 +40,7 @@ const logoutOnClick = () => {
 }
 
 const add = () => {
-    api.test();
+    api.Add();
 }
 
 const read = async () => {

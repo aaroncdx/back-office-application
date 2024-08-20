@@ -22,18 +22,31 @@ export const FireStore = () => {
     const db = getFirestore(app);
 
 
-    const Add =async () => {
+    // const Add =async () => {
+    //     try {
+    //         const docRef = await addDoc(collection(db, "users"), {
+    //           first: "Ada",
+    //           last: "Lovelace",
+    //           born: 1815
+    //         });
+    //         console.log("Document written with ID: ", docRef.id);
+    //     } catch (e) {
+    //     console.error("Error adding document: ", e);
+    //     }
+    // }
+
+    const Add = async (collection:string, fieldData:object) => {
         try {
-            const docRef = await addDoc(collection(db, "users"), {
-              first: "Ada",
-              last: "Lovelace",
-              born: 1815
-            });
-            console.log("Document written with ID: ", docRef.id);
-        } catch (e) {
-        console.error("Error adding document: ", e);
+            const response = await addDoc(collection(db, collection), fieldData);
+            return response;
+        }
+        catch (e) {
+            console.error("Error adding document: ", e);
+            return ;
         }
     }
+
+
 
     const Read = async () => {
         try{
@@ -61,8 +74,6 @@ export const FireStore = () => {
 
     const deleteFields = async () => {
         const cityRef = doc(db, 'cities', 'BJ');
-
-        // Remove the 'capital' field from the document
         await updateDoc(cityRef, {
             capital: deleteField()
         });
@@ -72,26 +83,26 @@ export const FireStore = () => {
     const test = async () => {
         const citiesRef = collection(db, "cities");
 
-await setDoc(doc(citiesRef, "SF"), {
-    name: "San Francisco", state: "CA", country: "USA",
-    capital: false, population: 860000,
-    regions: ["west_coast", "norcal"] });
-await setDoc(doc(citiesRef, "LA"), {
-    name: "Los Angeles", state: "CA", country: "USA",
-    capital: false, population: 3900000,
-    regions: ["west_coast", "socal"] });
-await setDoc(doc(citiesRef, "DC"), {
-    name: "Washington, D.C.", state: null, country: "USA",
-    capital: true, population: 680000,
-    regions: ["east_coast"] });
-await setDoc(doc(citiesRef, "TOK"), {
-    name: "Tokyo", state: null, country: "Japan",
-    capital: true, population: 9000000,
-    regions: ["kanto", "honshu"] });
-await setDoc(doc(citiesRef, "BJ"), {
-    name: "Beijing", state: null, country: "China",
-    capital: true, population: 21500000,
-    regions: ["jingjinji", "hebei"] });
+        await setDoc(doc(citiesRef, "SF"), {
+            name: "San Francisco", state: "CA", country: "USA",
+            capital: false, population: 860000,
+            regions: ["west_coast", "norcal"] });
+        await setDoc(doc(citiesRef, "LA"), {
+            name: "Los Angeles", state: "CA", country: "USA",
+            capital: false, population: 3900000,
+            regions: ["west_coast", "socal"] });
+        await setDoc(doc(citiesRef, "DC"), {
+            name: "Washington, D.C.", state: null, country: "USA",
+            capital: true, population: 680000,
+            regions: ["east_coast"] });
+        await setDoc(doc(citiesRef, "TOK"), {
+            name: "Tokyo", state: null, country: "Japan",
+            capital: true, population: 9000000,
+            regions: ["kanto", "honshu"] });
+        await setDoc(doc(citiesRef, "BJ"), {
+            name: "Beijing", state: null, country: "China",
+            capital: true, population: 21500000,
+            regions: ["jingjinji", "hebei"] });
     }
 
     return {
