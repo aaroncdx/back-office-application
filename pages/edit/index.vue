@@ -40,13 +40,12 @@ const logoutOnClick = () => {
 }
 
 const add = () => {
-    api.Add();
+    // api.test();
 }
 
 const read = async () => {
-    let response = await api.Read();
-    console.log('response', response);
-    
+    // let response = await api.multiple();
+    console.log('response', response); 
 }
     
 

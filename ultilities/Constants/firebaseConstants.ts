@@ -1,3 +1,3 @@
-export const USER_COLLECTION = "users";
+export const ADMIN_COLLECTION = "admin";
 
 export const COMPANY_COLLECTION = "company";

@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore,collection, addDoc , getDocs, getDoc, doc, setDoc,deleteDoc,updateDoc, deleteField} from "firebase/firestore";
+import { getFirestore, collection, addDoc , getDocs, getDoc, doc, query, where,setDoc,deleteDoc,updateDoc, deleteField} from "firebase/firestore";
 
 
 
@@ -21,23 +21,9 @@ export const FireStore = () => {
 
     const db = getFirestore(app);
 
-
-    // const Add =async () => {
-    //     try {
-    //         const docRef = await addDoc(collection(db, "users"), {
-    //           first: "Ada",
-    //           last: "Lovelace",
-    //           born: 1815
-    //         });
-    //         console.log("Document written with ID: ", docRef.id);
-    //     } catch (e) {
-    //     console.error("Error adding document: ", e);
-    //     }
-    // }
-
-    const Add = async (collection:string, fieldData:object) => {
+    const add = async (collectionName:string, fieldData:object) => {
         try {
-            const response = await addDoc(collection(db, collection), fieldData);
+            const response = await addDoc(collection(db, collectionName), fieldData);
             return response;
         }
         catch (e) {
@@ -46,69 +32,74 @@ export const FireStore = () => {
         }
     }
 
+    const query = async () =>{
+        const companyRef = collection(db, "company");
+        // const q = await getDoc(companyRef,where('employees',"==",'wKLDJ011oM0tQsuLBXmn'));
+        // console.log('q',q);
+    }
 
 
-    const Read = async () => {
+    const read = async (collection:string, document:string) => {
+        const docRef = doc(db, collection, document);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          return docSnap.data();
+        } else {
+          console.log("No such document!");
+          return 
+        }
+
+    }
+
+    const update = async (collection:string, document:string, updateFields:object)=> {
         try{
-
-            const docRef = doc(db, "users");
-            const docSnap = await getDoc(docRef);
-    
-            if (docSnap.exists()) {
-            console.log("Document data:", docSnap.data());
-            } else {
-            // docSnap.data() will be undefined in this case
-            console.log("No such document!");
-            }
-            return docSnap.data();
+            const docRef = doc(db,collection, document);
+            let response = await updateDoc(docRef, updateFields);
+            return response;
         }
-        catch(error){
-            return error;
+        catch(err){
+            return 
         }
-
     }
 
-    const DeleteDoc = async () => {
-        await deleteDoc(doc(db, "cities", "DC"));
-    }
-
-    const deleteFields = async () => {
-        const cityRef = doc(db, 'cities', 'BJ');
-        await updateDoc(cityRef, {
-            capital: deleteField()
+    const getUsers = async () => {
+        const querySnapshot = await getDocs(collection(db, "users"));
+        querySnapshot.forEach((doc) => {
+        console.log(doc.id, " => ", doc.data());
         });
     }
 
+    const deleteDocument = async (collection:string, document:string) => {
+        try{
+            let response = await deleteDoc(doc(db,collection, document));
+            return response;
+        }
+        catch(err){
+            return 
+        }       
+    }
 
-    const test = async () => {
-        const citiesRef = collection(db, "cities");
+    const deleteFields = async (collection:string, document:string) => {
+        try{
+            const docRef = doc(db,collection, document);
+            let response = await updateDoc(docRef, {
+                capital: deleteField()
+            });
+            return response;
+        }
+        catch(err){
 
-        await setDoc(doc(citiesRef, "SF"), {
-            name: "San Francisco", state: "CA", country: "USA",
-            capital: false, population: 860000,
-            regions: ["west_coast", "norcal"] });
-        await setDoc(doc(citiesRef, "LA"), {
-            name: "Los Angeles", state: "CA", country: "USA",
-            capital: false, population: 3900000,
-            regions: ["west_coast", "socal"] });
-        await setDoc(doc(citiesRef, "DC"), {
-            name: "Washington, D.C.", state: null, country: "USA",
-            capital: true, population: 680000,
-            regions: ["east_coast"] });
-        await setDoc(doc(citiesRef, "TOK"), {
-            name: "Tokyo", state: null, country: "Japan",
-            capital: true, population: 9000000,
-            regions: ["kanto", "honshu"] });
-        await setDoc(doc(citiesRef, "BJ"), {
-            name: "Beijing", state: null, country: "China",
-            capital: true, population: 21500000,
-            regions: ["jingjinji", "hebei"] });
+        }
     }
 
     return {
-        Add,
-        Read,
-        test
+        add,
+        read,
+        update,
+        getUsers,
+        query,
+        deleteDocument,
+        deleteFields,
     }
     
 }
