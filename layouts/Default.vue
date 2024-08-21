@@ -1,6 +1,7 @@
 <template>
     <div>
-        <slot v-if="checkUserState" />
+        <MenuBar/>
+    <slot v-if="checkUserState" />
     </div>
 </template>
 

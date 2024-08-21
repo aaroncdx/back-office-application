@@ -1,3 +1,18 @@
-.container {
-   @apply flex flex-col justify-around h-screen ;
+.auth-container{
+
+   @apply md:p-40;
+
+   .login-form-section {
+      @apply lg:w-1/2 
+      flex 
+      flex-col 
+      h-full 
+      justify-around
+      md:mx-16
+      lg:m-auto 
+      gap-5 
+      lg:border-2 
+      p-5 
+      rounded-xl;
+   }
 }
