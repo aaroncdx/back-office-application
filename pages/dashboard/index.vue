@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <span>dashboard dashboarddashboard</span>
+    <div class="rounded-lg p-10">
+        asdfasdf
     </div>
 </template>
 
