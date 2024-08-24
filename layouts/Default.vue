@@ -48,7 +48,7 @@
 </a-menu>
       </a-layout-sider>
       <a-layout>
-        <a-layout-content style="margin: 20px; margin-top: 2rem;">
+        <a-layout-content class="p-5">
           <!-- <a-layout-header style="background: #fff; padding: 0" /> -->
             <slot  />
             <!-- <a-layout-footer style="text-align: center">
@@ -88,4 +88,10 @@ const closeMenuBar = () => {
   @apply h-screen;
   touch-action: pan-y;
 }
+::v-deep(.ant-layout-sider-zero-width-trigger){
+   top:0px;
+
+}
+
+
 </style>
