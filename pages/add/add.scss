@@ -1,0 +1,11 @@
+.add-container{
+    @apply m-5;
+
+    .header{
+        @apply text-sc-h4;
+    }
+}
+
+.form-container{
+    @apply mt-10 flex flex-col gap-5;
+}
