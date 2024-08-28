@@ -5,7 +5,8 @@
             <InputText :fieldTitle="'First Name'" :placeholder="'Enter First Name'" v-model="user.name" />
             <InputText :fieldTitle="'Last Name'" :placeholder="'Enter Last Name'" v-model="user.name"/>
             <InputText :fieldTitle="'Email Name'" :placeholder="'Enter Email'" v-model="user.name"/>
-            <!-- <a-button @click="submit()">Default Button</a-button> -->
+            <AddressInput ref="addressFormRef"/>
+            <a-button @click="submit()">Default Button</a-button>
         </div>
     </div>
 </template>
@@ -19,8 +20,11 @@ const user = ref({
     name:''    
 })
 
+const addressFormRef = ref(null);
+
 const submit = () => {
-    console.log('user data', user.value);
+    let address = addressFormRef.value.getAddressData();
+    console.log('user data', user.value, address);
     
 }
 </script>
