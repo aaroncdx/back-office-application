@@ -21,6 +21,7 @@
 </template>
 
 <script lang="ts" setup>
+import { defineExpose } from 'vue';
 import countries from '~/assets/countries.json';
 import stateAndCity from '~/assets/stateandcity.json';
 

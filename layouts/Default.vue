@@ -85,7 +85,7 @@ const closeMenuBar = () => {
 
 <style scoped>
 .default-container {
-  @apply h-screen;
+  @apply h-auto;
   touch-action: pan-y;
 }
 ::v-deep(.ant-layout-sider-zero-width-trigger){
