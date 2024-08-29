@@ -1,11 +1,19 @@
 <template>
     <div class="input-text-container">
         <div class="field-title ">{{ fieldTitle }} :</div>
-        <a-input size="large" v-model:value="input_field_data" :placeholder="placeholder" />
+        <MazPhoneNumberInput
+            v-model="phoneNumber"
+            show-code-on-list
+            v-model:country-code="countryCode"
+            :preferred-countries="['MY', 'SG']"
+            @update="results = $event"
+        />
+        
     </div>
 </template>
 
 <script lang="ts" setup>
+
 const props = defineProps({
   fieldTitle:{
     type: String
@@ -15,9 +23,12 @@ const props = defineProps({
   }
 });
 
-const input_field_data = defineModel();
-
 const { fieldTitle, placeholder } = props;
+
+const phoneNumber = defineModel()
+const countryCode = ref('MY')
+const results = ref()
+
 </script>
 
 

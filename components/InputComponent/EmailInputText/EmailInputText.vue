@@ -1,7 +1,7 @@
 <template>
     <div class="input-text-container">
         <div class="field-title ">{{ fieldTitle }} :</div>
-        <a-input size="large" v-model:value="input_field_data" :placeholder="placeholder" />
+        <a-input  v-model:value="input_field_data" :placeholder="placeholder" />
     </div>
 </template>
 
@@ -23,7 +23,7 @@ const { fieldTitle, placeholder } = props;
 
 <style lang="scss" scoped>
 .input-text-container {
-  @apply flex flex-col gap-1;
+  @apply flex flex-col gap-3;
 
   .field-title {
     @apply  text-sc-subtitle1;

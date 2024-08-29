@@ -3,17 +3,26 @@
         <div class="header">Add Employee</div>
        
         <div class="form-container">
-            <ProfileAvatarInput/>
-            <a-divider>Personal Information</a-divider>
-            <InputText :fieldTitle="'First Name'" :placeholder="'Enter First Name'" v-model="user.name" />
-            <InputText :fieldTitle="'Last Name'" :placeholder="'Enter Last Name'" v-model="user.name"/>
-            <InputText :fieldTitle="'Email Name'" :placeholder="'Enter Email'" v-model="user.name"/>
-            <AddressInput ref="addressFormRef"/>
+            <div class="m-auto lg:col-span-2">
+                <ProfileAvatarInput/>
+            </div>
+            <div>
+                <a-divider>Personal Information</a-divider>
+                <InputText :fieldTitle="'First Name'" :placeholder="'Enter First Name'" v-model="user.name" />
+                <InputText :fieldTitle="'Last Name'" :placeholder="'Enter Last Name'" v-model="user.name"/>
+                <InputText :fieldTitle="'Email Address'" :placeholder="'Enter Email Address'" v-model="user.name"/>
+                <PhoneNumberInput :fieldTitle="'Phone Number'" :placeholder="'Enter Phone Number'" v-model="user.phone_num"/>
+                <AddressInput ref="addressFormRef"/>
+            </div>
+           <div>
             <a-divider>Job Information</a-divider>
-            <JobInformation ref="addressFormRef" />
+            <JobInformation ref="jobInformationRef" />
             <a-divider>Emergency Contact Information</a-divider>
-            <!-- <EmergencyContactInformation/> -->
-            <a-button @click="submit()">Default Button</a-button>
+            <EmergencyContactInformation ref="emergencyContactInformationRef"/>
+           </div>
+            <a-button class="mt-10 w-full lg:col-span-2 lg:w-1/2 m-auto" type="primary" size="large" @click="submit()">
+                <PlusOutlined class="mb-5"/> Add Employee
+            </a-button>
         </div>
     </div>
 </template>
@@ -26,7 +35,8 @@ definePageMeta({
 const user = ref({
     name:'',
     lastName:'',
-    email:''    
+    email:'',
+    phone_num: '',    
 })
 
 const addressFormRef = ref(null);

@@ -1,30 +1,37 @@
 <template>
-    <div id="app">
-      <vue-avatar
-      :width=200
-      :height=200
-      :borderRadius="200" 
-      :rotation="rotation"
-      :scale="scale"
-      ref="vueavatar"
-      @vue-avatar-editor:image-ready="onImageReady"
-      >
-    </vue-avatar>
-    <br>
-    scale
-    <a-slider v-model:value="scale" :min="1" :max="3" :step="0.02"/>
-    rotation
-    <a-slider v-model:value="rotation" :min="1" :max="360" :step="1"/>
-    <br>
-    <button v-on:click="saveClicked">Click</button>
-    <br>
-    <img ref="image">
-</div>
+    <div class="profile-avatar-container">
+        <!-- <div class="display-container"> 
+            <a-avatar class="m-auto" :size="100">
+                <template #icon><UserOutlined /></template>
+            </a-avatar>
+            <a-button type="link" @click="showModal">Edit Profile</a-button>
+        </div> -->
+        <div id="app" v-if="isAvatarEditorOn">
+            <vue-avatar
+            :width=200
+            :height=200
+            :borderRadius="200" 
+            :rotation="rotation"
+            :scale="scale"
+            ref="vueavatar"
+            @vue-avatar-editor:image-ready="onImageReady"
+            />
+            <div class="avatar-editor-controller">
+                <span>scale</span>
+                <a-slider v-model:value="scale" :min="1" :max="3" :step="0.02" />
+                <span>rotation</span>
+                <a-slider v-model:value="rotation" :min="1" :max="360" :step="1" />
+            </div>
+            <!-- <button v-on:click="saveClicked">Click</button> -->
+            <!-- <img ref="image"> -->
+        </div>
+    </div>
 </template>
 
 <script lang="ts" setup>
 import { VueAvatar } from "vue-avatar-editor-improved";
 
+const isAvatarEditorOn = ref(true);
 const rotation = ref(0);
 const scale = ref(1);
 const borderRadius = ref(0);
@@ -51,3 +58,17 @@ const saveClicked = async () => {
 };
 
 </script>
+
+<style lang="scss" scoped>
+    .profile-avatar-container{
+        @apply m-auto;   
+    }
+
+    .avatar-editor-controller{
+        @apply flex flex-col text-center p-5;
+    }
+
+    .display-container{
+        @apply flex flex-col gap-2;
+    }
+</style>

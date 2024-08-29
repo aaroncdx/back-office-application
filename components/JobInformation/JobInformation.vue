@@ -1,24 +1,45 @@
 <template>
-    <div class="flex flex-col gap-3">
-        <InputText :fieldTitle="'First Name'" :placeholder="'Enter First Name'" v-model="EmergencyContactInfo.name" />
-        <InputText :fieldTitle="'Relationship'" :placeholder="'Enter Relationship'" v-model="EmergencyContactInfo.name" />
-        <InputText :fieldTitle="'Phone Number'" :placeholder="'Enter Phone Number'" v-model="EmergencyContactInfo.phone" />
+    <div class="job-information-container">
+        <div class="rows">
+            <InputText :fieldTitle="'Employee ID'" :placeholder="''" v-model="jobInformation.employee_id" />
+            <InputText :fieldTitle="'Title'" :placeholder="'Enter Title'" v-model="jobInformation.title" />
+        </div>
+        <InputText :fieldTitle="'Supervisor Name'" :placeholder="'Enter Supervisor Name'" v-model="jobInformation.supervisor" />
+        <InputText :fieldTitle="'Department'" :placeholder="'Enter Department'" v-model="jobInformation.department" />
+        <div class="rows">
+            <InputText :fieldTitle="'Start Date'" :placeholder="'Enter Start Date'" v-model="jobInformation.start_Date" />
+            <InputText :fieldTitle="'Salary'" :placeholder="'Enter Salary'" v-model="jobInformation.salary" />
+        </div>
     </div>
 </template>
 
 <script lang="ts" setup>
-    const EmergencyContactInfo = reactive({
-    name: '',
-    phone: '',
-    relationship: '',
+    const jobInformation = reactive({
+    employee_id: '',
+    title: '',
+    supervisor: '',
+    department: '',
+    work_email:'',
+    start_Date:'',
+    salary:'',    
     });
 
-    const geEmergencyContactInfo = () => {
-    return EmergencyContactInfo;
+    const getJobInformation = () => {
+    return jobInformation;
     };
 
     // Expose the method to parent component
     defineExpose({
-        geEmergencyContactInfo
+        getJobInformation
     });
 </script>
+
+<style lang="scss" scoped>
+    .job-information-container {
+        @apply flex flex-col gap-1;
+    }
+
+    .rows{
+        @apply flex flex-row gap-1;
+    }
+</style>

@@ -16,6 +16,7 @@ export default defineNuxtConfig({
 	'@nuxtjs/tailwindcss',
 	'@ant-design-vue/nuxt',
 	'@pinia/nuxt',
+	'maz-ui/nuxt'
   ],
   tailwindcss: {
 	cssPath: '~/assets/css/tailwind.css',

@@ -2,17 +2,17 @@
     <div>
         <div class="field-title"> Address :</div>
         <div class="flex flex-col gap-3">
-            <a-input  v-model:value="address.street_address" placeholder="Enter Street Address" />
-            <a-input  v-model:value="address.street_address_line_2" placeholder="Enter Street Address Line 2" />
+            <a-input size="large" v-model:value="address.street_address" placeholder="Enter Street Address" />
+            <a-input size="large" v-model:value="address.street_address_line_2" placeholder="Enter Street Address Line 2" />
             <div class="flex flex-row gap-2">
-                <a-input  v-model:value="address.zip_code" placeholder="Zip Code" />
-                <a-input  v-model:value="address.state" placeholder="State" />
+                <a-input size="large" v-model:value="address.zip_code" placeholder="Zip Code" />
+                <a-input size="large" v-model:value="address.state" placeholder="State" />
                 
             </div>
-            <a-input  v-model:value="address.city" placeholder="City" />
+            <a-input size="large" v-model:value="address.city" placeholder="City" />
             <a-select
             v-model:value="address.country"
-            size="middle"
+            size="large"
             placeholder="Country"
             :options="countriesOptions"
             ></a-select>
