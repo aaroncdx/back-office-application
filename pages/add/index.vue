@@ -10,9 +10,9 @@
             <InputText :fieldTitle="'Email Name'" :placeholder="'Enter Email'" v-model="user.name"/>
             <AddressInput ref="addressFormRef"/>
             <a-divider>Job Information</a-divider>
-            <JobInformation />
+            <JobInformation ref="addressFormRef" />
             <a-divider>Emergency Contact Information</a-divider>
-            <EmergencyContactInformation/>
+            <!-- <EmergencyContactInformation/> -->
             <a-button @click="submit()">Default Button</a-button>
         </div>
     </div>
@@ -24,7 +24,9 @@ definePageMeta({
 })
 
 const user = ref({
-    name:''    
+    name:'',
+    lastName:'',
+    email:''    
 })
 
 const addressFormRef = ref(null);
