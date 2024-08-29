@@ -19,7 +19,6 @@
     title: '',
     supervisor: '',
     department: '',
-    work_email:'',
     start_Date:'',
     salary:'',    
     });

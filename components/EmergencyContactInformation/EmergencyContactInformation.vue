@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col gap-3">
         <InputText :fieldTitle="'First Name'" :placeholder="'Enter First Name'" v-model="EmergencyContactInfo.name" />
-        <InputText :fieldTitle="'Relationship'" :placeholder="'Enter Relationship'" v-model="EmergencyContactInfo.name" />
+        <InputText :fieldTitle="'Relationship'" :placeholder="'Enter Relationship'" v-model="EmergencyContactInfo.relationship" />
         <PhoneNumberInput :fieldTitle="'Phone Number'" :placeholder="'Enter Phone Number'" v-model="EmergencyContactInfo.phone"/>
     </div>
 </template>
@@ -13,12 +13,12 @@
     relationship: '',
     });
 
-    const geEmergencyContactInfo = () => {
+    const getEmergencyContactInfo = () => {
     return EmergencyContactInfo;
     };
 
     // Expose the method to parent component
     defineExpose({
-        geEmergencyContactInfo
+        getEmergencyContactInfo
     });
 </script>

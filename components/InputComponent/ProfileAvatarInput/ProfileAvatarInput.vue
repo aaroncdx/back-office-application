@@ -48,14 +48,19 @@ const openFileInput = () => {
     vueavatar.value.clicked();
 };
 
-const saveClicked = async () => {
+const getProfileAvatarSource = async () => {
     var img = vueavatar.value.getImageScaled();
 
     avatarFile.value = img.toDataURL().split(",");
 
     console.log( avatarFile.value);
-    
+    return avatarFile.value;
 };
+
+// Expose the method to parent component
+defineExpose({
+    getProfileAvatarSource
+});
 
 </script>
 
