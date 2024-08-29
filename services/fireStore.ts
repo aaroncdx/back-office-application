@@ -64,9 +64,15 @@ export const FireStore = () => {
 
     const getUsers = async () => {
         const querySnapshot = await getDocs(collection(db, "users"));
+        let array: object[] = [];
         querySnapshot.forEach((doc) => {
-        console.log(doc.id, " => ", doc.data());
+            array.push({
+                id:doc.id,
+                ...doc.data()
+            });
         });
+        
+        return array;
     }
 
     const deleteDocument = async (collection:string, document:string) => {

@@ -1,3 +1,7 @@
 .btn-container{
-    @apply flex flex-row justify-between p-2 gap-5;
+    @apply flex flex-row p-2 gap-5;
+}
+
+::v-deep(.ant-btn >span){
+    display: inline-flex !important;
 }
