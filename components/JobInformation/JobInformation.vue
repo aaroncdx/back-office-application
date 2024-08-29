@@ -2,12 +2,12 @@
     <div class="job-information-container">
         <div class="rows">
             <InputText :fieldTitle="'Employee ID'" :placeholder="''" v-model="jobInformation.employee_id" />
-            <InputText :fieldTitle="'Title'" :placeholder="'Enter Title'" v-model="jobInformation.title" />
+            <InputText :fieldTitle="'Title'" :placeholder="'Enter Title'" v-model="jobInformation.job_title" />
         </div>
         <InputText :fieldTitle="'Supervisor Name'" :placeholder="'Enter Supervisor Name'" v-model="jobInformation.supervisor" />
         <InputText :fieldTitle="'Department'" :placeholder="'Enter Department'" v-model="jobInformation.department" />
         <div class="rows">
-            <InputText :fieldTitle="'Start Date'" :placeholder="'Enter Start Date'" v-model="jobInformation.start_Date" />
+            <InputText :fieldTitle="'Start Date'" :placeholder="'Enter Start Date'" v-model="jobInformation.job_start_Date" />
             <InputText :fieldTitle="'Salary'" :placeholder="'Enter Salary'" v-model="jobInformation.salary" />
         </div>
     </div>
@@ -16,10 +16,10 @@
 <script lang="ts" setup>
     const jobInformation = reactive({
     employee_id: '',
-    title: '',
+    job_title: '',
     supervisor: '',
     department: '',
-    start_Date:'',
+    job_start_Date:'',
     salary:'',    
     });
 
