@@ -1,5 +1,5 @@
 <template>
-    <div >
+    <div>
          <!-- <div class="btn-container">
              <div class="display-container"> 
                 <a-avatar src="https://firebasestorage.googleapis.com/v0/b/back-office-application-9ce82.appspot.com/o/3hznphdmZE?alt=media&token=3c5e3523-836d-4163-b1cc-30a714421884" class="m-auto" :size="40">

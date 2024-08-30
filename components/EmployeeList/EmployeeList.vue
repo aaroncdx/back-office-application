@@ -64,7 +64,7 @@ const getEmployeeList = async () =>{
 }
 
 const redirectViewUser = (id:string) =>{
-  router.push(`/view?id=${id}`);
+  router.push(`/profile?id=${id}`);
 }
 </script>
 
