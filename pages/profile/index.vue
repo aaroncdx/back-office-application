@@ -1,6 +1,12 @@
 <template>
-    <div>
-        asdfasd
+    <div class="profile-container">
+        <a-avatar :src="userProfileUrl" class="m-auto" :size="150">
+            <template #icon><UserOutlined /></template>
+        </a-avatar>
+        <div class="text-sc-h6">{{ userData.first_name }} {{ userData.last_name }}</div>
+        <a-divider>personal</a-divider>
+        <a-divider>Job Information</a-divider>
+        <a-divider>Emergency Contact Information</a-divider>
     </div>
 </template>
 
@@ -14,11 +20,13 @@ const imgServices = FireStorage();
 const router = useRouter();
 const route = useRoute();
 
+const userData = ref({});
+const userProfileUrl = ref('');
+
 onMounted(async()=>{
-    console.log(route.query.id);
-    let response = await storeServices.read(USERS_COLLECTION,route.query.id)
-    console.log('response', response);
-    let responseImg = await imgServices.downloadImg(response.profile_pic_ref);
-    console.log('response', responseImg);
+    userData.value = await storeServices.read(USERS_COLLECTION,route.query.id)
+    console.log(userData.value);
+    userProfileUrl.value = await imgServices.downloadImg( userData.value.profile_pic_ref);
 })
 </script>
+<style lang="scss" src="./profile.scss" scoped></style>
